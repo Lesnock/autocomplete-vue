@@ -114,6 +114,8 @@ export default {
             if (this.selectedItem !== null) {
                 return this.selectedItem = null
             }
+            
+            this.selectedIndex = 0
 
             return this.showList = true
         }
