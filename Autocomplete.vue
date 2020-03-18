@@ -40,6 +40,11 @@ export default {
         filterBy: String,
         name: String,
     },
+    mounted() {
+        document.querySelectorAll(':not(.autocomplete-option)').forEach(element => {
+            element.addEventListener('click', this.focusout)
+        })
+    },
     data() {
         return {
             showList: true,
