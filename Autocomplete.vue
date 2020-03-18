@@ -6,7 +6,6 @@
             ref="input"
             class="autocomplete-input"
             v-model="query"
-            @blur="focusout"
             @keydown.up="up"
             @keydown.down="down"
             @keydown.enter="selectItem"
@@ -40,6 +39,11 @@ export default {
         },
         filterBy: String,
         name: String,
+    },
+    mounted() {
+        document.querySelectorAll(':not(.autocomplete-option)').forEach(element => {
+            element.addEventListener('click', this.focusout)
+        })
     },
     data() {
         return {
@@ -91,7 +95,7 @@ export default {
             this.$refs.itemsList.scrollTop = this.selectedIndex * this.itemHeight
         },
         focusout() {
-            setTimeout(() => this.showList = false, 200)
+            this.showList = false
         }
     },
     computed: {
